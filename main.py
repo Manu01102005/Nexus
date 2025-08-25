@@ -38,11 +38,19 @@ def processCommand(c):
     elif "news" in c.lower():
         r=requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey={API_KEY}")
         print("API Status Code:", r.status_code)
+        print("API Response:", r.json())
         if r.status_code==200:
             data=r.json()
             articles=data.get('articles',[])
             for article in articles:
                 speak(article["title"])
+                if articles:
+                    for article in articles:
+                        speak(article["title"])
+                else:
+                    speak("Sorry, I could not find any news headlines at the moment.")
+        else:
+            speak("I'm having trouble connecting to the news service.")
     
 if __name__ == "__main__": 
     speak("Initializing jarvis...")
