@@ -6,15 +6,22 @@ import subprocess
 import requests
 
 
+
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
 API_KEY="a681fc3f9e614a3c81adb219e7ba0e04"
-
+list=[]
+f = open('todo.txt', 'r')
+r=f.read()
+for i in r:
+    list.append(r)
+    
 def speak(text):
     engine.say(text)
     engine.runAndWait() 
     
 def processCommand(c):
+    
     if "open google" in c.lower():
         webbrowser.open("https://google.com")
     elif "open spotify" in c.lower():
@@ -35,6 +42,7 @@ def processCommand(c):
         # This script decreases the volume by a small increment
         subprocess.run(["osascript", "-e", "set v olume output volume (output volume of (get volume settings) - 10)"])
         speak("Volume decreased.")
+        
     elif "news" in c.lower():
         r=requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey={API_KEY}")
         print("API Status Code:", r.status_code)
@@ -51,6 +59,38 @@ def processCommand(c):
                     speak("Sorry, I could not find any news headlines at the moment.")
         else:
             speak("I'm having trouble connecting to the news service.")
+    elif "create to do list" in c.lower():
+        print("Creating to do list")
+        speak("Creating to do list")
+        with sr.Microphone() as source:
+            print("Speak task..i'm listening")
+            audio = recognizer.listen(source, timeout=8, phrase_time_limit=3)
+            task= recognizer.recognize_google(audio)
+            f = open('todo.txt', 'a')
+            f.write(task)
+            f.write("\n")
+            f.close()
+            print(list)
+            
+    elif "show to do list" in c.lower():
+        print("your to do list is:")
+        speak("your to do list is")
+        f = open('todo.txt', 'r')
+        r=f.read()
+        print(r)
+        speak(r)
+    elif "edit list" in c.lower():
+        with sr.Microphone() as source:
+            print("What would you like to remove from the list?")
+            speak("What would you like to remove from the list?")
+            audio = recognizer.listen(source, timeout=8, phrase_time_limit=3)
+            element= recognizer.recognize_google(audio)
+            print(element)
+            if element in list:
+                    list.remove(element)
+            print(list)
+        
+        
     
 if __name__ == "__main__": 
     speak("Initializing jarvis...")
@@ -75,6 +115,5 @@ if __name__ == "__main__":
                     
         except Exception as e:
             print("Error: {0}".format(e)) 
-        
-        
+     
         
