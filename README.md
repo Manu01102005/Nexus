@@ -1,4 +1,4 @@
-<img width="468" height="472" alt="Screenshot 2025-09-03 at 9 56 56 PM" src="https://github.com/user-attachments/assets/6d41b7ed-11d5-4b56-90d6-50d2570af997" />
+<img width="1170" height="587" alt="Screenshot 2025-09-03 at 9 59 39 PM" src="https://github.com/user-attachments/assets/895ec77b-a7c7-4e9d-8460-0754db4ec02f" />
 
 Project Jarvis: Your Personal Desktop Voice Assistant
 Jarvis is a voice-activated desktop assistant designed to streamline your daily tasks and enhance your productivity. Built with Python, this project brings the convenience of a personal AI assistant directly to your computer.
