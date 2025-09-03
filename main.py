@@ -4,7 +4,8 @@ import pyttsx3
 import musiclibrary
 import subprocess
 import requests
-
+import application
+#from AppOpener import open, close appopener lib for windows
 
 
 recognizer = sr.Recognizer()
@@ -22,11 +23,11 @@ def speak(text):
     
 def processCommand(c):
     
-    if "open google" in c.lower():
+    if "open google web" in c.lower():
         webbrowser.open("https://google.com")
-    elif "open spotify" in c.lower():
+    elif "open spotify web" in c.lower():
         webbrowser.open("https://spotify.com")
-    elif "open youtube" in c.lower():
+    elif "open youtube web" in c.lower():
         webbrowser.open("https://youtube.com")
     elif c.lower().startswith("play"):
         song=c.lower().replace("play", "").strip()
@@ -59,6 +60,13 @@ def processCommand(c):
                     speak("Sorry, I could not find any news headlines at the moment.")
         else:
             speak("I'm having trouble connecting to the news service.")
+            
+    elif c.lower().startswith("unlock"):
+        o=c.lower().replace("unlock", "").strip()
+        a=application.app_name[o]
+        subprocess.run(["open",a], check=True)
+        
+        
     elif "create to do list" in c.lower():
         print("Creating to do list")
         speak("Creating to do list")
