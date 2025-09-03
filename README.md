@@ -1,4 +1,5 @@
-<img width="1080" height="1080" alt="PRAY" src="https://github.com/user-attachments/assets/416b5d35-1d95-42e5-8684-c261452dbb18" />
+<img width="500" height="500" alt="Agya" src="https://github.com/user-attachments/assets/5c9f6127-b80b-45a5-8aec-7df06e09540b" />
+
 
 
 Project Jarvis: Your Personal Desktop Voice Assistant
