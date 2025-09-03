@@ -11,11 +11,10 @@ import application
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
 API_KEY="a681fc3f9e614a3c81adb219e7ba0e04"
-list=[]
-f = open('todo.txt', 'r')
-r=f.read()
-for i in r:
-    list.append(r)
+'''f = open('todo.txt', 'r')
+list=f.read().splitlines()'''
+
+
     
 def speak(text):
     engine.say(text)
@@ -61,8 +60,8 @@ def processCommand(c):
         else:
             speak("I'm having trouble connecting to the news service.")
             
-    elif c.lower().startswith("unlock"):
-        o=c.lower().replace("unlock", "").strip()
+    elif c.lower().startswith("launch"):
+        o=c.lower().replace("launch", "").strip()
         a=application.app_name[o]
         subprocess.run(["open",a], check=True)
         
@@ -74,11 +73,15 @@ def processCommand(c):
             print("Speak task..i'm listening")
             audio = recognizer.listen(source, timeout=8, phrase_time_limit=3)
             task= recognizer.recognize_google(audio)
-            f = open('todo.txt', 'a')
-            f.write(task)
-            f.write("\n")
-            f.close()
-            print(list)
+            with open('todo.txt', 'a') as f:
+                f.write(task)
+                f.write("\n")
+            with open('todo.txt', 'r') as f:
+                s=f.read()
+            print(s)
+            speak(s)
+            
+            
             
     elif "show to do list" in c.lower():
         print("your to do list is:")
@@ -87,16 +90,20 @@ def processCommand(c):
         r=f.read()
         print(r)
         speak(r)
+
     elif "edit list" in c.lower():
         with sr.Microphone() as source:
             print("What would you like to remove from the list?")
             speak("What would you like to remove from the list?")
             audio = recognizer.listen(source, timeout=8, phrase_time_limit=3)
             element= recognizer.recognize_google(audio)
+            with open('todo.txt', 'r') as f:
+                content=f.read()
+            updated_content=content.replace(element,"")
+            with open('todo.txt', 'w') as f:
+                f.write(updated_content)
             print(element)
-            if element in list:
-                    list.remove(element)
-            print(list)
+            speak("list edited")
         
         
     
