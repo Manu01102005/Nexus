@@ -1,5 +1,5 @@
 Project Jarvis: Your Personal Desktop Voice Assistant
-Jarvis is a powerful, voice-activated desktop assistant designed to streamline your daily tasks and enhance your productivity. Built with Python, this project brings the convenience of a personal AI assistant directly to your computer.
+Jarvis is a voice-activated desktop assistant designed to streamline your daily tasks and enhance your productivity. Built with Python, this project brings the convenience of a personal AI assistant directly to your computer.
 
 ✨ Features
 With simple voice commands, Jarvis can perform a variety of actions to help you stay organized and efficient.
@@ -8,7 +8,7 @@ With simple voice commands, Jarvis can perform a variety of actions to help you 
 
 ✅ Make To-Do Lists: Keep track of your tasks and never forget a deadline. Simply dictate your to-do list, and Jarvis will save it for you.
 
-📰 Get Current News Headlines: Stay informed with the latest news. Jarvis can fetch and read the top news headlines from around the world.
+📰 Get Current News Headlines: Stay informed with the latest news. Jarvis can fetch and read the top news headlines.
 
 🔊 Control System Volume: Adjust your computer's volume with a simple command. Increase or decrease the volume to your desired level without lifting a finger.
 
