@@ -10,7 +10,7 @@ import application
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-API_KEY="a681fc3f9e614a3c81adb219e7ba0e04"
+API_KEY="" #use your own API key
 '''f = open('todo.txt', 'r')
 list=f.read().splitlines()'''
 
