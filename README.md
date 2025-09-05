@@ -19,8 +19,8 @@ To get Jarvis up and running on your local machine, follow these steps.
 
 Clone the repository:
 
-git clone https://github.com/your-username/jarvis.git
-cd jarvis
+git clone https://github.com/Manu01102005/Jarvis
+cd Jarvis
 Install dependencies:
 
 pip install -r requirements.txt
