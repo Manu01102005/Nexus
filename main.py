@@ -5,14 +5,28 @@ import musiclibrary
 import subprocess
 import requests
 import application
-#from AppOpener import open, close appopener lib for windows
+import pyaudio
+import struct
+#from AppOpener import open, close; appopener lib for windows
+import pvporcupine
+porcupine = pvporcupine.create(
+  access_key='DKQndW0SUcBQVIGaj2SpME34AEMM02/NGr2/Bn4ncNGEsmWkIibzow==',
+  keyword_paths=['Nexus_en_mac_v3_0_0.ppn']
+)
+pa = pyaudio.PyAudio()
+audio_stream = pa.open(
+    rate=porcupine.sample_rate,
+    channels=1,
+    format=pyaudio.paInt16,
+    input=True,
+    frames_per_buffer=porcupine.frame_length
+)
 
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-API_KEY="" #use your own API key
-'''f = open('todo.txt', 'r')
-list=f.read().splitlines()'''
+API_KEY="a681fc3f9e614a3c81adb219e7ba0e04"
+
 
 
     
@@ -33,15 +47,11 @@ def processCommand(c):
         link=musiclibrary.music[song]
         webbrowser.open(link)
     elif "increase volume" in c.lower():
-        # osascript to increase volume
-        # This script increases the volume by a small increment
         subprocess.run(["osascript", "-e", "set volume output volume (output volume of (get volume settings) + 10)"])
-        speak("Volume increased.")
+        speak("Volume increased")
     elif "decrease volume" in c.lower():
-        # osascript to decrease volume
-        # This script decreases the volume by a small increment
         subprocess.run(["osascript", "-e", "set v olume output volume (output volume of (get volume settings) - 10)"])
-        speak("Volume decreased.")
+        speak("Volume decreased")
         
     elif "news" in c.lower():
         r=requests.get(f"https://newsapi.org/v2/top-headlines?country=in&apiKey={API_KEY}")
@@ -106,29 +116,40 @@ def processCommand(c):
             speak("list edited")
         
         
-    
-if __name__ == "__main__": 
-    speak("Initializing jarvis...")
+
+
+if __name__ == "__main__":
+    speak("Initializing Nexus. I am ready to listen.")
+    print("Listening...")
     while True:
-        print("recognizing...")
         try:
-            with sr.Microphone() as source:
-                print("Listening...")
-                # listen INSIDE the with block
-                audio = recognizer.listen(source, timeout=8, phrase_time_limit=1)  
-            # once audio is captured, you can process it
-            word = recognizer.recognize_google(audio)
-            if(word.lower()=="jarvis"):
-                speak("Ya")
-                #listen for command
+            # Process audio stream for wake word detection
+            pcm = audio_stream.read(porcupine.frame_length, exception_on_overflow=False)
+            pcm = struct.unpack_from("h" * porcupine.frame_length, pcm)
+            result = porcupine.process(pcm)
+
+            if result >= 0:
+                print("Yes!")
+                speak("Yes?")
                 with sr.Microphone() as source:
-                    print("jarvis active ...")
-                    audio = recognizer.listen(source)
+                    print("Listening for command...")
+                    recognizer.adjust_for_ambient_noise(source)
+                    audio = recognizer.listen(source, phrase_time_limit=5)
+                try:
                     command = recognizer.recognize_google(audio)
-                    
+                    print(f"Command received: {command}")
                     processCommand(command)
                     
-        except Exception as e:
-            print("Error: {0}".format(e)) 
+                except sr.UnknownValueError:
+                    speak("Sorry, I did not understand that.")
+                except Exception as e:
+                    speak("An unexpected error occurred.")
+                    print(f"Error: {e}")
+                finally:
+                    # Loop back to listening for the wake word
+                    print("Listening...")
+        except KeyboardInterrupt:
+            print("Stopping Nexus...")
+            
+            
      
-        
