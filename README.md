@@ -1,4 +1,5 @@
-<img width="1170" height="587" alt="Screenshot 2025-09-03 at 9 59 39 PM" src="https://github.com/user-attachments/assets/895ec77b-a7c7-4e9d-8460-0754db4ec02f" />
+
+<img width="1143" height="406" alt="Screenshot 2025-09-24 at 9 56 40 PM" src="https://github.com/user-attachments/assets/44cd522a-580b-475e-927a-2e1e27a0eaab" />
 
 Nexus: Your Personal Desktop Voice Assistant
 
