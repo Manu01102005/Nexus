@@ -10,7 +10,7 @@ import struct
 #from AppOpener import open, close; appopener lib for windows
 import pvporcupine
 porcupine = pvporcupine.create(
-  access_key='DKQndW0SUcBQVIGaj2SpME34AEMM02/NGr2/Bn4ncNGEsmWkIibzow==',
+  access_key='ENTER YOUR OWN API KEY',
   keyword_paths=['Nexus_en_mac_v3_0_0.ppn']
 )
 pa = pyaudio.PyAudio()
@@ -25,7 +25,7 @@ audio_stream = pa.open(
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-API_KEY="a681fc3f9e614a3c81adb219e7ba0e04"
+API_KEY="ENTER YOUR OWN API KEY"
 
 
 
