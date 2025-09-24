@@ -7,8 +7,8 @@ import requests
 import application
 import pyaudio
 import struct
-#from AppOpener import open, close; appopener lib for windows
 import pvporcupine
+
 porcupine = pvporcupine.create(
   access_key='ENTER YOUR OWN API KEY',
   keyword_paths=['Nexus_en_mac_v3_0_0.ppn']
