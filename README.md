@@ -3,7 +3,7 @@
 
 Nexus: Your Personal Desktop Voice Assistant
 
-Nexus is a small project that is a voice-activated desktop assistant designed to streamline your daily tasks and enhance your productivity. Built with Python, this project brings the convenience of a personal AI assistant directly to your computer.
+Nexus(a voice-activated desktop assistant)is a mini project designed to streamline your daily tasks and enhance your productivity. Built with Python, this project brings the convenience of a personal AI assistant directly to your computer.
 
 ✨ Features
 With simple voice commands, Nexus can perform a variety of actions to help you stay organized and efficient.
