@@ -16,6 +16,8 @@ With simple voice commands, Nexus can perform a variety of actions to help you s
 
 🔊 Control System Volume: Adjust your computer's volume with a simple command. Increase or decrease the volume without lifting a finger.
 
+More features to be added...
+
 Note: I have created my own wake word by using the Picovoice Console, a free online tool that allows you to train and download a new wake word model file (.ppn).
 
 🚀 Getting Started
