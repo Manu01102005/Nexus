@@ -21,7 +21,7 @@ Note: I have created my own wake word by using the Picovoice Console, a free onl
 To get Nexus up and running on your local machine, follow these steps.
 
 Clone the repository:
-git clone https://github.com/Manu01102005/Nexus
+git clone https://github.com/Manu01102005/Nexus.git
 cd Nexus
 
 Install dependencies:
